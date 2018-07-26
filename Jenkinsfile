@@ -5,19 +5,19 @@ node {
 git credentialsId: 'jenkins-credentials', url: 'https://github.com/tejamodukuri/java-app.git'
    }
    stage('Build') {
-     withMaven(jdk: 'java', maven: 'apache-maven-3.5.3') {
+     withMaven(jdk: 'java', maven: 'apache-maven') {
        sh 'mvn clean compile'
      }
    }
    stage('Unit Test') {
-     withMaven(jdk: 'java', maven: 'apache-maven-3.5.3') {
+     withMaven(jdk: 'java', maven: 'apache-maven') {
        sh 'mvn test'
      }
    }
    stage('SonarQube Analysis') {
       //def job = build job: 'SonarJob'
       //withSonarQubeEnv("SonarQube") {
-     withMaven(jdk: 'java', maven: 'apache-maven-3.5.3') {
+     withMaven(jdk: 'java', maven: 'apache-maven') {
         sh 'mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar ' +
           ' -Dsonar.host.url=https://sonarcloud.io '+
           ' -Dsonar.organization=pavants52 ' +
@@ -26,17 +26,17 @@ git credentialsId: 'jenkins-credentials', url: 'https://github.com/tejamodukuri/
       //}
      }
     stage('Archival') {
-     withMaven(jdk: 'java', maven: 'apache-maven-3.5.3') {
+     withMaven(jdk: 'java', maven: 'apache-maven') {
        sh 'mvn package'
      }
    }
      stage('Deploy to Artifactory Repo') {
-     withMaven(jdk: 'java', maven: 'apache-maven-3.5.3') {
+     withMaven(jdk: 'java', maven: 'apache-maven') {
      }
      }
    
     stage('Deploy to Dev') {
-     withMaven(jdk: 'java', maven: 'apache-maven-3.5.3') {
+     withMaven(jdk: 'java', maven: 'apache-maven') {
       //junit '**/target/surefire-reports/TEST-*.xml'
       //archive 'target/*.jar'
    }
