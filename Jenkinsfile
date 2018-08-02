@@ -42,14 +42,14 @@ git credentialsId: 'jenkins-credentials', url: 'https://github.com/tejamodukuri/
    }
     }
    stage('Smoke Test Execution') {
-     withMaven(jdk: 'java', maven: 'apache-maven-3.5.3') {
+     withMaven(jdk: 'java', maven: 'apache-maven') {
       //junit '**/target/surefire-reports/TEST-*.xml'
       //archive 'target/*.jar'
    }
    }
     
    stage('Smoke Test Execution') {
-     withMaven(jdk: 'java', maven: 'apache-maven-3.5.3') {
+     withMaven(jdk: 'java', maven: 'apache-maven') {
       //junit '**/target/surefire-reports/TEST-*.xml'
       //archive 'target/*.jar'
     }
