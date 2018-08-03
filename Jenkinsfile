@@ -2,7 +2,7 @@ node {
    
    stage('Code Checkout') { // for display purposes
       // Get some code from a GitHub repository
-git credentialsId: 'jenkins-credentials', url: 'https://github.com/tejamodukuri/java-app.git'
+git credentialsId: '	0dffb763-3bcf-486b-b09d-65c52bf36a02', url: 'https://github.com/tejamodukuri/java-app.git'
    }
    stage('Build') {
      withMaven(jdk: 'java', maven: 'apache-maven') {
@@ -18,10 +18,10 @@ git credentialsId: 'jenkins-credentials', url: 'https://github.com/tejamodukuri/
       //def job = build job: 'SonarJob'
       //withSonarQubeEnv("SonarQube") {
      withMaven(jdk: 'java', maven: 'apache-maven') {
-        sh 'mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar ' +
+        mvn sonar:sonar \
           ' -Dsonar.host.url=https://sonarcloud.io '+
-          ' -Dsonar.organization=pavants52 ' +
-         ' -Dsonar.login=f540443177992898ca50fb418f28d763e9cbd20e ' 
+          ' -Dsonar.organization=tejamodukuri ' +
+         ' -Dsonar.login=fe02b6165d5aa637b8b6991df03da3aed554937b4 ' 
         }
       //}
      }
