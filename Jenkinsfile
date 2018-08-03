@@ -18,9 +18,9 @@ git credentialsId: '	0dffb763-3bcf-486b-b09d-65c52bf36a02', url: 'https://github
       //def job = build job: 'SonarJob'
       //withSonarQubeEnv("SonarQube") {
      withMaven(jdk: 'java', maven: 'apache-maven') {
-        mvn sonar:sonar \
-          ' -Dsonar.host.url=https://sonarcloud.io '+
-          ' -Dsonar.organization=tejamodukuri ' +
+        sh 'mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar ' +
+          ' -Dsonar.host.url=https://sonarcloud.io  '+
+          ' -Dsonar.organization=tejamodukuri-github ' +
          ' -Dsonar.login=fe02b6165d5aa637b8b6991df03da3aed554937b4 ' 
         }
       //}
